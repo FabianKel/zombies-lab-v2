@@ -35,7 +35,7 @@ gcc -o gen_map helpers.c -fopenmp
 ![alt text](assets/exampleC.png)
 
 - **Ejecución y Comparación**
-![alt text](assets/example2C.png)
+![alt text](assets/exampleC2.png)
 
 ## **Versión en Python**
 
