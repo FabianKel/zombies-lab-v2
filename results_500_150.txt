@@ -1,0 +1,94 @@
+
+================================================================================
+BENCHMARK DE SIMULACION DE ZOMBIES
+================================================================================
+
+PARAMETROS DE PRUEBA:
+  - Archivo de mapa: test_map_500.txt
+  - Tamano estimado: 500x500
+  - Dias de simulacion: 150
+  - Threads maximos: 8
+
+================================================================================
+PARTE 1: COMPARACION C SERIAL VS C PARALELO (OpenMP)
+================================================================================
+
+Ejecutando version SERIAL en C (3 runs)...
+  Tiempo promedio serial: 0.3548 s
+
+Ejecutando version PARALELA en C con 1 threads (3 runs)...
+  Tiempo promedio con 1 threads: 0.3460 s
+  Speedup:    1.03x
+  Eficiencia: 102.5%
+
+Ejecutando version PARALELA en C con 2 threads (3 runs)...
+  Tiempo promedio con 2 threads: 0.1833 s
+  Speedup:    1.94x
+  Eficiencia: 96.8%
+
+Ejecutando version PARALELA en C con 4 threads (3 runs)...
+  Tiempo promedio con 4 threads: 0.1223 s
+  Speedup:    2.90x
+  Eficiencia: 72.5%
+
+Ejecutando version PARALELA en C con 8 threads (3 runs)...
+  Tiempo promedio con 8 threads: 0.0907 s
+  Speedup:    3.91x
+  Eficiencia: 48.9%
+
+================================================================================
+PARTE 2: COMPARACION C PARALELO VS PYTHON PARALELO (8 threads)
+================================================================================
+
+Ejecutando C paralelo con 8 threads (3 runs)...
+  Tiempo promedio C: 0.0903 s
+
+Ejecutando Python paralelo con 8 threads (3 runs)...
+  Tiempo promedio Python: 18.7845 s
+
+C es 207.95x mas rapido que Python
+Reduccion de tiempo usando C: 99.5%
+
+================================================================================
+TABLA DE RESULTADOS
+================================================================================
+
+C SERIAL VS C PARALELO:
+------------------------------------------------------------
+Threads    Tiempo (s)      Speedup    Eficiencia  
+------------------------------------------------------------
+Serial     0.3548          1.00       100.0%      
+1          0.3460          1.03       102.5%
+2          0.1833          1.94       96.8%
+4          0.1223          2.90       72.5%
+8          0.0907          3.91       48.9%
+
+C PARALELO VS PYTHON PARALELO:
+------------------------------------------------------------
+Implementacion       Tiempo (s)      Factor    
+------------------------------------------------------------
+C Paralelo           0.0903          1.0x      
+Python Paralelo      18.7845         207.9x mas lento
+
+================================================================================
+RESUMEN EJECUTIVO
+================================================================================
+
+MEJORES RESULTADOS:
+  - Mejor speedup en C: 3.91x con 8 threads
+  - Eficiencia maxima:  48.9%
+  - C vs Python: C es 207.95x mas rapido
+
+TIEMPOS ABSOLUTOS:
+  - C Serial: 0.3548 s
+  - C Paralelo (8 threads): 0.09066666666666666 s
+  - Python Paralelo (8 threads): 18.7845 s
+
+Resultados guardados en: benchmark_results_500_150.json
+
+Grafico guardado: benchmark_500_150_speedup_efficiency.png
+Grafico guardado: benchmark_500_150_c_vs_python.png
+
+================================================================================
+BENCHMARK COMPLETADO
+================================================================================

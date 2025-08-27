@@ -19,7 +19,7 @@ static double walltime(void) {
 }
 
 static int read_input(FILE *f, int *N, char **grid) {
-    int M; // ignored now (days come from argv)
+    int M; // ignorado
     if (fscanf(f, "%d %d", N, &M) != 2) return 0;
 
     int Nloc = *N;
@@ -28,13 +28,16 @@ static int read_input(FILE *f, int *N, char **grid) {
 
     int count = 0;
     while (count < Nloc * Nloc) {
-        int c = fgetc(f);
-        if (c == EOF) break;
-        if (c == 'H' || c == 'Z' || c == '.' || c == 'h' || c == 'z')
-            (*grid)[count++] = (char)toupper(c);
+        char ch;
+        if (fscanf(f, " %c", &ch) != 1) break;  // nota el espacio para saltar whitespace
+        ch = (char)toupper((unsigned char)ch);
+        if (ch == 'H' || ch == 'Z' || ch == '.') {
+            (*grid)[count++] = ch;
+        }
     }
     return count == Nloc * Nloc;
 }
+
 
 static void save_grid(char *grid, int N, const char *fname) {
     FILE *out = fopen(fname, "w");

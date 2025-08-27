@@ -1,0 +1,42 @@
+{
+  "parameters": {
+    "map_file": "test_map_400.txt",
+    "map_size": "400",
+    "days": 150,
+    "max_threads": 8
+  },
+  "c_benchmarks": {
+    "serial": {
+      "time": 0.23120866666666667,
+      "threads": 1
+    },
+    "parallel": {
+      "1": {
+        "time": 0.225,
+        "speedup": 1.027594074074074,
+        "efficiency": 102.75940740740741
+      },
+      "2": {
+        "time": 0.133,
+        "speedup": 1.7384110275689222,
+        "efficiency": 86.9205513784461
+      },
+      "4": {
+        "time": 0.08166666666666667,
+        "speedup": 2.831126530612245,
+        "efficiency": 70.77816326530612
+      },
+      "8": {
+        "time": 0.06366666666666666,
+        "speedup": 3.6315497382198956,
+        "efficiency": 45.39437172774869
+      }
+    }
+  },
+  "cross_language": {
+    "c_parallel": 0.063,
+    "python_parallel": 12.35934,
+    "speedup_c_over_python": 196.17999999999998,
+    "time_reduction_vs_python": 99.49026404322561
+  }
+}

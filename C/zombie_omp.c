@@ -11,7 +11,7 @@ static const int DJ[8] = {0, 0, -1, +1, -1, +1, -1, +1};
 static inline int inside(int i, int j, int N) { return (i >= 0 && i < N && j >= 0 && j < N); }
 
 static int read_input(FILE *f, int *N, char **grid) {
-    int M; // ignored
+    int M; // ignorado
     if (fscanf(f, "%d %d", N, &M) != 2) return 0;
 
     int Nloc = *N;
@@ -20,13 +20,17 @@ static int read_input(FILE *f, int *N, char **grid) {
 
     int count = 0;
     while (count < Nloc * Nloc) {
-        int c = fgetc(f);
-        if (c == EOF) break;
-        if (c == 'H' || c == 'Z' || c == '.' || c == 'h' || c == 'z')
-            (*grid)[count++] = (char)toupper(c);
+        char ch;
+        if (fscanf(f, " %c", &ch) != 1) break;  // nota el espacio antes de %c
+        ch = (char)toupper((unsigned char)ch);
+        if (ch == 'H' || ch == 'Z' || ch == '.') {
+            (*grid)[count++] = ch;
+        }
+        // si es cualquier otro caracter, lo ignoramos (por si acaso)
     }
     return count == Nloc * Nloc;
 }
+
 
 static void save_grid(char *grid, int N, const char *fname) {
     FILE *out = fopen(fname, "w");
